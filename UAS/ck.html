@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--==Title==-->
+    <title>Product Page HTML</title>
+    <!--==CSS==-->
+    <link rel="stylesheet" href="assets/css/style.css"/>
+    <!--==Poppins-font==-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!--==link to local datajs==-->
+    <script src="data.js"></script>
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+
+
+</head>
+<body>
+  <nav>
+    <div class="logo" style="
+    background-image: url('assets/img/logo.png');
+    background-repeat: no-repeat;
+    background-size: cover;"></div>
+
+    <div class="main_container">
+      <div class="menu" onclick="location.href='index.html'">HOME</div>
+      <div class="menu" onclick="location.href='shop.html'">SHOP</div>
+      <div class="menu" onclick="location.href='return.html'">RETURN</div>
+      <div class="menu" onclick="location.href='about.html'">ABOUT</div>
+  
+    </div>
+
+    <!--==Product-Page==-->
+    <section id="product-page">
+    <div class="product-details">
+        <!--**Img*************************-->
+        <div class="product-img">
+
+        <!-- Swiper Slider -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+            
+            <!--**1******-->
+            <div class="swiper-slide">
+                <div id="gambar"></div> 
+            <!--**2******-->
+            <div class="swiper-slide">
+                <img src="images/2.jpg" />
+            </div>
+            <!--**3******-->
+            <div class="swiper-slide">
+                <img src="images/3.jpg" />
+            </div>
+            <!--**4******-->
+            <div class="swiper-slide">
+                <img src="images/1.jpg" />
+            </div>
+
+            </div>
+
+            <!--btns-->
+            <div class="slider-btns">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+
+
+           
+        </div>
+        <!--**Text**-->
+        <div class="product-text">
+            <!--category-->
+        </div id= disini> </div>
+            <p>LifeWear is. clothing designed to make everyone's life better. It is simple, high-quality, everyday clothing with a practical sense of beauty- ingenious in detail, thought through with life's needs in mind, and always evolving.
+              <br/>
+               
+            </p>
+            <!--size-->
+            <div class="product-size-container">
+                <strong>Select Size:-</strong>
+                <div class="product-size">
+                    <!--xl-->
+                    <input type="checkbox" class="s-checkbox" id="s-xl">
+                    <label for="s-xl" class="s-label">XL</label>
+                    <!--Small-->
+                    <input type="checkbox" class="s-checkbox" id="s-s">
+                    <label for="s-s" class="s-label">S</label>
+                    <!--Medium-->
+                    <input type="checkbox" class="s-checkbox" id="s-m">
+                    <label for="s-m" class="s-label">M</label>
+                    <!--Large-->
+                    <input type="checkbox" class="s-checkbox" id="s-l">
+                    <label for="s-l" class="s-label">L</label>
+                </div>
+            </div>
+
+            <!--btn-->
+            <div class="product-button">
+                <a href="#" class="add-bag-btn">Add To Bag</a>
+                <a href="#" class="add-wishlist-btn">Add To Wishlist</a>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!--==Jquery==-->
+    <script
+  src="https://code.jquery.com/jquery-3.6.1.js"
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+  crossorigin="anonymous"></script>
+
+    <!-- Swiper Mech JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- masukin Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          450: {
+            slidesPerView: 2,
+            spaceBetween: 0,
+          },
+          820: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          1024: {
+            slidesPerView: 2,
+            spaceBetween:0,
+          },
+        },
+      });
+
+
+      $('.s-checkbox').on('change', function() {
+		    $('.s-checkbox').not(this).prop('checked', false);  
+		});
+    </script>
+     <script>  
+      var qs = window.location.search;
+      var ur = new URLSearchParams(qs);
+      var skudicari = ur.get('skudicari');
+      if (!skudicari) {
+      skudicari = 1;
+    }
+
+    
+    var skunya = data.Products.filter(function (el) {
+    return el.sku == skudicari;
+    });
+    document.getElementById('disini').innerHTML = '<span class="product-category"></span>' + skunya[0].category +'"><br>' + skunya[0].name +
+   '"><br>' + '<br>harga: ' + '<span class="product-price"> </span>'+skunya[0].price + '</div>';
+  
+   document.getElementById('gambar').innerHTML = '<div class="swiper-slide"> img src="assets/img/ </div>' + skunya[0].img;
+      </script>
+  
+  
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>UNIQLO</title>
+      <link rel="stylesheet" type="text/css" href="assets/css/ALLITEM.css"></link>
+      <script src="assets/data.js"></script>
+    </head>
+    <body>
+      <nav>
+        <div class="logo" style="
+        background-image: url('assets/img/logo.png');
+        background-repeat: no-repeat;
+        background-size: cover;"></div>
+
+        <div class="main_container">
+          <div class="menu" onclick="location.href='index.html'">HOME</div>
+          <div class="menu" onclick="location.href='shop.html'">SHOP</div>
+          <div class="menu" onclick="location.href='return.html'">RETURN</div>
+          <div class="menu" onclick="location.href='about.html'">ABOUT</div>
+      
+        </div>
+      </nav>
+
+      <!-- Header Category  -->
+    <header>
+        <section class="headercategory">
+            <div class="category" onclick="location.href='ALLITEM.html'">ALL</div>
+            <div class="category" onclick="location.href='TOPS.html'">TOPS</div>
+            <div class="category" onclick="location.href='BOTTOMS.html'">BOTTOMS</div>
+            <div class="category" onclick="location.href='ACCESSORIES.html'">ACCESSORIES</div>
+            <div class="category" onclick="location.href='SALE.html'">SALE</div>
+          </div>
+        </section>
+      </header>
+  
+      <br><br>
+  <!-- Garis -->
+      <hr>
+
+      <body>
+        <div id="itemResults"></div>
+      </body>
+    </html>
+    <script>
+     
+     var accessoriesItems = [];
+
+for (var i = 0; i < item.length; i++) {
+  if (item[i].category === "Accessories") {
+    accessoriesItems.push(item[i]);
+  }
+}
+
+function compareAccessoriesByStatus(a, b) {
+  if (a.status < b.status) {
+    return 1;
+  } else if (a.status > b.status) {
+    return -1;
+  } else {
+    return 0;
+  }
+}
+
+accessoriesItems.sort(compareAccessoriesByStatus);
+
+var Items = "";
+
+for (var r = 0; r < accessoriesItems.length; r++) {
+  Items += '<a href="ck.html?sku=' + accessoriesItems[r].sku + '"><div class="eachitem"><img src="assets/img/' + 
+  accessoriesItems[r].foto + '" /><h3>' + 
+  accessoriesItems[r].name + '</h3><h5>' + 
+  accessoriesItems[r].category + 
+  '</h5><span class="statusItem">' + 
+  accessoriesItems[r].status + '</span><h4>' + 
+  accessoriesItems[r].price + '</h4></div></a>';
+}
+
+document.getElementById('itemResults').innerHTML = Items;
+
+    </script>
+    
+    
